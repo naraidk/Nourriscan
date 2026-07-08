@@ -1,0 +1,8 @@
+<h1>Analyser un plat</h1>
+
+<%= form_with model: @dish, local: true, data: { turbo: false } do |f| %>
+  <%= f.label :image, "Photo du plat" %>
+  <%= f.file_field :image %>
+
+  <%= f.submit "Analyser" %>
+<% end %>

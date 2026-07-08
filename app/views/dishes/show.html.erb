@@ -1,0 +1,60 @@
+<%= turbo_stream_from @dish %>
+
+<div class="container py-5">
+
+  <div class="text-center mb-4" id="dish-title">
+    <h1 class="fw-bold">
+      <%= @dish.name.present? ? @dish.name : "Analyse en cours…" %>
+    </h1>
+  </div>
+
+  <div class="card shadow-sm mx-auto" style="max-width: 650px;">
+    <div class="card-body">
+
+      <!-- Image -->
+      <div class="text-center mb-4">
+        <% if @dish.image.attached? %>
+          <%= image_tag @dish.image.variant(resize_to_fill: [300, 300]), class: "img-fluid rounded", style: "width: 300px; height: 300px; object-fit: cover;" %>
+        <% end %>
+      </div>
+
+      <!-- LOADING STATE -->
+      <% if @dish.calories.nil? %>
+        <div class="text-center py-4" id="analysis-loading">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p class="mt-3 fs-5">Analyse en cours…</p>
+        </div>
+      <% end %>
+
+      <!-- FINAL RESULTS (hidden until Turbo Stream replaces loading) -->
+      <div id="analysis-results">
+        <% if @dish.calories.present? %>
+          <ul class="list-group list-group-flush fs-5">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Calories :</span>
+              <strong><%= @dish.calories %></strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Protéines :</span>
+              <strong><%= @dish.proteins %> g</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Glucides :</span>
+              <strong><%= @dish.carbs %> g</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Lipides :</span>
+              <strong><%= @dish.fats %> g</strong>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+
+      <div class="text-center mt-4">
+        <%= link_to "Analyser un autre plat", new_dish_path, class: "btn btn-primary btn-lg" %>
+      </div>
+
+    </div>
+  </div>
+
+</div>
