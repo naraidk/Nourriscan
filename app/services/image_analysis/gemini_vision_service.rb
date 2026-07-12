@@ -15,7 +15,7 @@ module ImageAnalysis
     INTERACTIONS_URL = "https://generativelanguage.googleapis.com/v1beta/interactions"
     DEFAULT_MODEL    = ENV.fetch("GEMINI_MODEL", "gemini-3.5-flash")
 
-    def self.call(image_bytes, mime_type)
+    def self.call(image_bytes, mime_type = "image/jpeg")
       return { "__source" => "no_api_key" } unless API_KEY.present?
       return { "quota_exhausted" => true } if quota_remaining <= 0
 
@@ -86,11 +86,19 @@ module ImageAnalysis
 
     def self.parse_response(text)
       clean = text.gsub(/```json|```/, "").strip
-      JSON.parse(clean)
-    rescue JSON::ParserError => e
-      Rails.logger.error("GeminiVisionService parse error: #{e.class}: #{e.message}")
+      data = JSON.parse(clean)
+
+      {
+        "name"      => data["name"],
+        "calories"  => data["calories"].to_i,
+        "proteins"  => data["proteins"].to_i,
+        "carbs"     => data["carbs"].to_i,
+        "fats"      => data["fats"].to_i
+      }
+    rescue
       nil
     end
+
 
     # QUOTA SYSTEM (unchanged)
     def self.quota_cache_key(date = Date.current)
@@ -114,6 +122,17 @@ module ImageAnalysis
 
     def self.seconds_until_midnight
       (Date.tomorrow.beginning_of_day - Time.current).to_i
+    end
+
+    def self.detect_mime_type(filename)
+      ext = File.extname(filename).downcase
+
+      case ext
+      when ".jpg", ".jpeg" then "image/jpeg"
+      when ".png"          then "image/png"
+      when ".gif"          then "image/gif"
+      else "application/octet-stream"
+      end
     end
   end
 end

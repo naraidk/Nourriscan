@@ -33,3 +33,6 @@
 # Ignore key files for decrypting credentials and more.
 /config/*.key
 
+# Ignore my media
+/00Media/
+*.DS_Store
