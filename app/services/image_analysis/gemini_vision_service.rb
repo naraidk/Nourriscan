@@ -129,7 +129,7 @@ module ImageAnalysis
     end
 
     def self.quota_remaining
-      [DAILY_QUOTA - quota_used, 0].max
+      [ DAILY_QUOTA - quota_used, 0 ].max
     end
 
     def self.consume_quota!(n = 1)
