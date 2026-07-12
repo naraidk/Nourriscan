@@ -2,6 +2,10 @@
 Nourriscan is a lightweight AI‑powered tool that turns a simple food photo into a quick nutritional breakdown. Upload an image, and the app identifies the food using the Google Gemini Vision API, then estimates calories and macros.
 I built Nourriscan to explore how modern AI can enhance everyday tasks inside a Ruby on Rails application.
 
+## Nourriscan — Analyse alimentaire intelligente
+Nourriscan est une application simple qui permet d’analyser un plat à partir d’une photo. L’idée est de rendre la nutrition plus accessible : tu prends une image de ton repas, l’IA identifie les aliments et te donne une estimation des calories et des informations nutritionnelles.
+C’est un projet que j’ai développé avec l’intégration d’IA dans Ruby on Rails, en utilisant Google Gemini Vision pour la reconnaissance d’images.
+
 ## Technologies
 - Ruby on Rails
 - JavaScript
