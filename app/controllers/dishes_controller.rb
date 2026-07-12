@@ -28,6 +28,17 @@ class DishesController < ApplicationController
     end
   end
 
+def timer
+  @dish = Dish.find(params[:id])
+
+  render turbo_stream: turbo_stream.replace(
+    "analysis-timer",
+    partial: "dishes/timer",
+    locals: { dish: @dish }
+  )
+end
+
+
   private
 
   def set_dish

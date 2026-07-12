@@ -1,18 +1,31 @@
-<ul class="list-group list-group-flush fs-5">
-  <li class="list-group-item d-flex justify-content-between">
-    <span>Calories :</span>
-    <strong><%= dish.calories %></strong>
-  </li>
-  <li class="list-group-item d-flex justify-content-between">
-    <span>Protéines :</span>
-    <strong><%= dish.proteins %> g</strong>
-  </li>
-  <li class="list-group-item d-flex justify-content-between">
-    <span>Glucides :</span>
-    <strong><%= dish.carbs %> g</strong>
-  </li>
-  <li class="list-group-item d-flex justify-content-between">
-    <span>Lipides :</span>
-    <strong><%= dish.fats %> g</strong>
-  </li>
-</ul>
+<% if dish.calories.present? %>
+  <ul class="list-group list-group-flush fs-5" style="font-family: sans-serif; list-style: none; padding-left: 0;">
+    <li class="list-group-item d-flex justify-content-between">
+      <span>Calories :</span>
+      <strong><%= dish.calories %> kcal</strong>
+      <br><br>
+    </li>
+
+    <li class="list-group-item d-flex justify-content-between">
+      <span>Protéines :</span>
+      <strong><%= dish.proteins %> g</strong>
+    </li>
+
+    <li class="list-group-item d-flex justify-content-between">
+      <span>Glucides :</span>
+      <strong><%= dish.carbs %> g</strong>
+    </li>
+
+    <li class="list-group-item d-flex justify-content-between">
+      <span>Lipides :</span>
+      <strong><%= dish.fats %> g</strong>
+    </li>
+  </ul>
+<% end %>
+<% if ENV["GEMINI_API_KEY"].present? %>
+  <div class="d-flex justify-content-between">
+    <span>Quota Gemini :</span>
+    <strong><%= ImageAnalysis::GeminiVisionService.quota_remaining %> / <%= ImageAnalysis::GeminiVisionService::DAILY_QUOTA %></strong>
+  </div>
+  <br>
+<% end %>

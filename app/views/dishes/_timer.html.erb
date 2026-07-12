@@ -1,0 +1,7 @@
+<% if dish.analysis_started_at.present? && dish.calories.nil? %>
+  <% elapsed = (Time.current - dish.analysis_started_at).to_i %>
+
+  <div class="text-muted fs-5">
+    Analyse en cours depuis <strong><%= elapsed %> secondes</strong>…
+  </div>
+<% end %>
