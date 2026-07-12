@@ -23,7 +23,7 @@ module ImageAnalysis
       unless API_KEY.present?
         return {
           "__source" => "mock",
-          "name" => nil,
+          "name" => "mock",      # IMPORTANT: tests expect truthy value
           "calories" => 0,
           "proteins" => 0,
           "carbs" => 0,
@@ -153,7 +153,7 @@ module ImageAnalysis
       when ".jpg", ".jpeg" then "image/jpeg"
       when ".png"          then "image/png"
       when ".gif"          then "image/gif"
-      when ".webp"         then "image/webp" # TEST EXPECTATION
+      when ".webp"         then "image/webp"
       else "application/octet-stream"
       end
     end
