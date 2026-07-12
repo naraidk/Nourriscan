@@ -1,6 +1,42 @@
-Nourriscan is a food‑analysis application that identifies dishes and estimates their nutritional values from a single photo. Built with Ruby on Rails and modern JavaScript, it delivers a smooth, real‑time experience powered by the Gemini Image Analysis API. The project combines AI‑driven image understanding with clean UI design to help users instantly learn what’s on their plate.
+## Nourriscan — AI Food Analysis
+Nourriscan is a lightweight AI‑powered tool that turns a simple food photo into a quick nutritional breakdown. Upload an image, and the app identifies the food using the Google Gemini Vision API, then estimates calories and macros.
+I built Nourriscan to explore how modern AI can enhance everyday tasks inside a Ruby on Rails application.
 
-Nourriscan est une application intelligente capable d’analyser un plat à partir d’une simple photo. Elle identifie automatiquement la recette, estime ses valeurs nutritionnelles et offre une compréhension immédiate de ce que l’utilisateur consomme. Le projet est développé avec Ruby on Rails et JavaScript, et s’appuie sur l’API Gemini pour l’analyse d’images, combinant intelligence artificielle et expérience utilisateur soignée.
+## Technologies
+- Ruby on Rails
+- JavaScript
+- PostgreSQL
+- Turbo Stream
+- Gemini Vision API
+
+## Features
+- Image Analysis : Upload a photo and let the AI detect the food
+- Calorie Estimation : Automatic calculation of calories and macros
+- Meal History : Keep track of previously scanned meals
+- Minimal UI : One upload page, one results page
+- Clear Output : Clean, readable nutritional results
+
+## The Process
+I started by setting up a classic Rails structure with models, controllers, and ActiveStorage for image handling.
+From there, I built a dedicated service to communicate with the Gemini Vision API, transforming raw image data into meaningful nutritional information.
+
+The app was developed iteratively: upload → analyze → display.
+Every step focused on keeping the experience simple and easy to understand.
+
+## What I Learned
+- Integrating AI APIs into a Rails backend
+- Building clean Ruby services for external API calls
+- Handling uncertain or incomplete AI responses
+- Designing around a single, focused user flow
+- Improving code quality with Rubocop and GitHub Actions
+
+## Possible Improvements
+- More detailed nutrition database
+- Better multi‑food detection
+- Editable results when the AI misidentifies something
+- Favorites or meal‑tracking features
+- A more modern UI with animations
+- Live camera scanning
 
 ## Demo
 
