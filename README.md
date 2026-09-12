@@ -1,3 +1,5 @@
+<img width="980" height="1348" alt="Image" src="https://github.com/user-attachments/assets/cc4a5953-2950-43ab-ae6f-5783f5557b33" />
+
 ## Nourriscan — AI Food Analysis
 Nourriscan is a lightweight AI‑powered tool that turns a simple food photo into a quick nutritional breakdown. Upload an image, and the app identifies the food using the Google Gemini Vision API, then estimates calories and macros.
 I built Nourriscan to explore how modern AI can enhance everyday tasks inside a Ruby on Rails application.
